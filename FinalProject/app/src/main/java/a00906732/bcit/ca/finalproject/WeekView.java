@@ -1,20 +1,24 @@
 package a00906732.bcit.ca.finalproject;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
-public class WeekView extends ActionBarActivity {
+public class WeekView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week_view);
         Intent intent = getIntent();
+        String username = intent.getStringExtra("Username");
+        TextView welcome = (TextView)findViewById(R.id.textView2);
+        welcome.setText("Welcome " + username + " !\nHere is task for next 4 days"); //welcome message
     }
 
 

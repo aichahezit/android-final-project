@@ -1,18 +1,20 @@
 package a00906732.bcit.ca.finalproject;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
-    public Button loginButton;
+    //public Button loginButton;
+    DatabaseHelper dh = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +24,7 @@ public class MainActivity extends ActionBarActivity {
         ImageView image = (ImageView) findViewById(R.id.imageView);
         image.setImageResource(R.drawable.logo);
 
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
     }
 
 
@@ -48,10 +50,28 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * move to week view if password and username is match
+     * toast error message if they are not matched
+     * @param v
+     */
     public void login(View v){
-        Intent intent = new Intent(this, WeekView.class);
-        //loginButton = (Button) findViewById(R.id.loginButton);
-        startActivity(intent);
+        EditText usernameEditText = (EditText)findViewById(R.id.editText2);
+        EditText passwordEditText = (EditText)findViewById(R.id.editText);
+        String username = usernameEditText.getText().toString();
+        String passwordInput = passwordEditText.getText().toString();
+
+        String password = dh.searchPassword(username);
+
+        if(passwordInput.equals(password)){
+            Intent intent = new Intent(this, WeekView.class);
+            intent.putExtra("Username", username);
+            startActivity(intent);
+
+        }
+        else{
+            Toast.makeText(MainActivity.this, "Username and password did not match", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void registerView(View v){

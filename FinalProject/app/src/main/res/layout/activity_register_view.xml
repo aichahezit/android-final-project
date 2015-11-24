@@ -12,28 +12,27 @@
         android:layout_height="wrap_content"
         android:text="OK"
         android:id="@+id/loginButton"
-        android:onClick="loginView"
+        android:onClick="registerUser"
         android:background="@drawable/rounded_blue"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_marginTop="98dp"
-        android:layout_below="@+id/editText7"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="58dp"
-        android:layout_marginStart="58dp" />
+        android:layout_alignTop="@+id/button"
+        android:layout_toLeftOf="@+id/button"
+        android:layout_toStartOf="@+id/button"
+        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText2"
-        android:hint="Email"
+        android:id="@+id/editTextUsername"
+        android:hint="Username"
         android:autoText="false"
         android:background="@drawable/rounded_corner"
         android:height="40dp"
         android:width="215dp"
         android:minWidth="215dp"
         android:minHeight="40dp"
-        android:inputType="number"
+        android:inputType="text"
         android:singleLine="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="50dp"
@@ -47,16 +46,17 @@
         android:id="@+id/button"
         android:onClick="loginViewCancel"
         android:background="@drawable/rounded_blue"
-        android:layout_alignTop="@+id/loginButton"
-        android:layout_alignRight="@+id/editText7"
-        android:layout_alignEnd="@+id/editText7"
-        android:layout_marginRight="45dp"
-        android:layout_marginEnd="45dp" />
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_below="@+id/editTextPassword_conf"
+        android:layout_alignRight="@+id/editTextPassword_conf"
+        android:layout_alignEnd="@+id/editTextPassword_conf" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText6"
+        android:id="@+id/editTextPassword"
         android:hint="Password.."
         android:autoText="false"
         android:background="@drawable/rounded_corner"
@@ -66,7 +66,7 @@
         android:minHeight="40dp"
         android:inputType="number"
         android:singleLine="true"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/editTextUsername"
         android:layout_alignLeft="@+id/editText2"
         android:layout_alignStart="@+id/editText2"
         android:layout_marginTop="30dp" />
@@ -74,7 +74,7 @@
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText7"
+        android:id="@+id/editTextPassword_conf"
         android:hint="Confirm Password.."
         android:autoText="false"
         android:background="@drawable/rounded_corner"
@@ -85,7 +85,7 @@
         android:inputType="number"
         android:singleLine="true"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/editText6"
+        android:layout_below="@+id/editTextPassword"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

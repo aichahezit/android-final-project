@@ -41,7 +41,7 @@
         android:layout_above="@+id/editText"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:hint="Email"
+        android:hint="Username"
         android:autoText="false"
         android:background="@drawable/rounded_corner"
         android:height="40dp"
@@ -49,7 +49,7 @@
         android:layout_marginTop="50dp"
         android:minWidth="215dp"
         android:minHeight="40dp"
-        android:inputType="number"
+        android:inputType="text"
         android:singleLine="true"/>
 
     <ImageView
