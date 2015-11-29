@@ -5,9 +5,15 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class DayView extends ActionBarActivity {
+
+    DatabaseHelper dh = new DatabaseHelper(this);
+    TextView taskName;
+    TextView courseName;
+    TextView dueDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +21,14 @@ public class DayView extends ActionBarActivity {
         setContentView(R.layout.activity_day_view);
         Intent intent = getIntent();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        taskName    = (TextView) findViewById(R.id.taskName);
+        courseName  = (TextView) findViewById(R.id.courseName);
+        dueDate     = (TextView) findViewById(R.id.dueDate);
+        Tasks displayTask = dh.getTask(1);
+        taskName.setText(displayTask.getTaskname());
+        courseName.setText(displayTask.getCourse());
+        dueDate.setText(displayTask.getDuedate());
     }
 
 

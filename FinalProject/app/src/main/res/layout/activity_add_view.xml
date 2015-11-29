@@ -9,7 +9,7 @@
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText3"
+        android:id="@+id/taskName"
         android:hint="Task Name.."
         android:autoText="false"
         android:background="@drawable/rounded_corner"
@@ -17,7 +17,7 @@
         android:width="215dp"
         android:minWidth="215dp"
         android:minHeight="40dp"
-        android:inputType="number"
+        android:inputType="text"
         android:singleLine="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -26,7 +26,7 @@
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText4"
+        android:id="@+id/courseName"
         android:hint="Course.."
         android:autoText="false"
         android:background="@drawable/rounded_corner"
@@ -34,16 +34,16 @@
         android:width="215dp"
         android:minWidth="215dp"
         android:minHeight="40dp"
-        android:inputType="number"
+        android:inputType="text"
         android:singleLine="true"
-        android:layout_below="@+id/editText3"
+        android:layout_below="@+id/taskName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText5"
+        android:id="@+id/markWeight"
         android:hint="Mark Weight.."
         android:autoText="false"
         android:background="@drawable/rounded_corner"
@@ -53,9 +53,9 @@
         android:minHeight="40dp"
         android:inputType="number"
         android:singleLine="true"
-        android:layout_below="@+id/editText4"
-        android:layout_alignLeft="@+id/editText4"
-        android:layout_alignStart="@+id/editText4"
+        android:layout_below="@+id/courseName"
+        android:layout_alignLeft="@+id/courseName"
+        android:layout_alignStart="@+id/courseName"
         android:layout_marginTop="20dp" />
 
     <RelativeLayout
@@ -113,7 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
-        android:id="@+id/button7"
+        android:id="@+id/addTaskButton"
         android:onClick="weekViewAdd"
         android:background="@drawable/rounded_blue"
         android:layout_marginTop="20dp"

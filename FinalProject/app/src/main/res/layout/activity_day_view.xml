@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Assignment 1"
-                    android:id="@+id/textView21"
+                    android:id="@+id/taskName"
                     android:layout_gravity="center_horizontal"
                     android:gravity="left"
                     android:textColor="#2364AA" />
@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="COMP3717"
-                    android:id="@+id/textView22"
+                    android:id="@+id/courseName"
                     android:layout_gravity="center_horizontal"
                     android:gravity="left" />
 
@@ -67,189 +67,189 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="12/11/2015"
-                    android:id="@+id/textView23"
+                    android:id="@+id/dueDate"
                     android:layout_gravity="center_horizontal"
                     android:gravity="left" />
             </LinearLayout>
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2dp"
-                android:background="#c0c0c0"/>
+            <!--<View-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:background="#c0c0c0"/>-->
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/linear3"
-                android:layout_marginTop="10dp"
-                android:background="#ddf1f8"
-                android:layout_marginBottom="10dp">
+            <!--<LinearLayout-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:id="@+id/linear3"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:background="#ddf1f8"-->
+                <!--android:layout_marginBottom="10dp">-->
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Lab 8"
-                    android:id="@+id/textView24"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="left"
-                    android:textColor="#2364AA" />
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:text="Lab 8"-->
+                    <!--android:id="@+id/textView24"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:gravity="left"-->
+                    <!--android:textColor="#2364AA" />-->
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="COMP2222"
-                    android:id="@+id/textView25"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="left" />
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:text="COMP2222"-->
+                    <!--android:id="@+id/textView25"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:gravity="left" />-->
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="12/11/2015"
-                    android:id="@+id/textView26"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="left" />
-            </LinearLayout>
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:text="12/11/2015"-->
+                    <!--android:id="@+id/textView26"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:gravity="left" />-->
+            <!--</LinearLayout>-->
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2dp"
-                android:background="#c0c0c0"/>
+            <!--<View-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:background="#c0c0c0"/>-->
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/linear5"
-                android:layout_marginTop="10dp"
-                android:background="#ddf1f8"
-                android:layout_marginBottom="10dp">
+            <!--<LinearLayout-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:id="@+id/linear5"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:background="#ddf1f8"-->
+                <!--android:layout_marginBottom="10dp">-->
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Assignment 3"
-                    android:id="@+id/textView27"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="left"
-                    android:textColor="#2364AA" />
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:text="Assignment 3"-->
+                    <!--android:id="@+id/textView27"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:gravity="left"-->
+                    <!--android:textColor="#2364AA" />-->
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="COMP2434"
-                    android:id="@+id/textView28"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="left" />
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:text="COMP2434"-->
+                    <!--android:id="@+id/textView28"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:gravity="left" />-->
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="12/11/2015"
-                    android:id="@+id/textView29"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="left" />
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:text="12/11/2015"-->
+                    <!--android:id="@+id/textView29"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:gravity="left" />-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2dp"
-                android:background="#c0c0c0"/>
+            <!--<View-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:background="#c0c0c0"/>-->
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/linear6"
-                android:layout_marginTop="10dp"
-                android:background="#ddf1f8"
-                android:layout_marginBottom="10dp">
+            <!--<LinearLayout-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:id="@+id/linear6"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:background="#ddf1f8"-->
+                <!--android:layout_marginBottom="10dp">-->
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Midterm"
-                    android:id="@+id/textView30"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="left"
-                    android:textColor="#2364AA" />
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:text="Midterm"-->
+                    <!--android:id="@+id/textView30"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:gravity="left"-->
+                    <!--android:textColor="#2364AA" />-->
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="COMP2342"
-                    android:id="@+id/textView31"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="left" />
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:text="COMP2342"-->
+                    <!--android:id="@+id/textView31"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:gravity="left" />-->
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="12/11/2015"
-                    android:id="@+id/textView32"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="left" />
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:text="12/11/2015"-->
+                    <!--android:id="@+id/textView32"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:gravity="left" />-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2dp"
-                android:background="#c0c0c0"/>
+            <!--<View-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:background="#c0c0c0"/>-->
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/linear7"
-                android:layout_marginTop="10dp"
-                android:background="#ddf1f8"
-                android:layout_marginBottom="10dp">
+            <!--<LinearLayout-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:id="@+id/linear7"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:background="#ddf1f8"-->
+                <!--android:layout_marginBottom="10dp">-->
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Assignment1"
-                    android:id="@+id/textView33"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="left"
-                    android:textColor="#2364AA" />
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:text="Assignment1"-->
+                    <!--android:id="@+id/textView33"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:gravity="left"-->
+                    <!--android:textColor="#2364AA" />-->
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="COMP7777"
-                    android:id="@+id/textView34"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="left" />
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:text="COMP7777"-->
+                    <!--android:id="@+id/textView34"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:gravity="left" />-->
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="12/11/2015"
-                    android:id="@+id/textView35"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="left" />
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                    <!--android:text="12/11/2015"-->
+                    <!--android:id="@+id/textView35"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:gravity="left" />-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
         </LinearLayout>
     </ScrollView>

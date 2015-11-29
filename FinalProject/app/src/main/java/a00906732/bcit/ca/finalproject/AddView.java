@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -21,10 +22,15 @@ import java.util.Locale;
 public class AddView extends ActionBarActivity {
 
     private EditText dueDateText;
-
     private DatePickerDialog dueDatePickerDialog;
-
     private SimpleDateFormat dateFormatter;
+
+    DatabaseHelper dh = new DatabaseHelper(this);
+    EditText    taskName;
+    EditText    courseName;
+    EditText    markWeight;
+    Spinner     accountSpinner;
+    EditText    dueDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +44,13 @@ public class AddView extends ActionBarActivity {
         dueDateText = (EditText) findViewById(R.id.dueDate);
         dueDateText.setInputType(InputType.TYPE_NULL);
         dueDateText.requestFocus();
-
         setDateTimeField();
 
+        taskName        = (EditText)findViewById(R.id.taskName);
+        courseName      = (EditText)findViewById(R.id.courseName);
+        markWeight      = (EditText)findViewById(R.id.markWeight);
+        accountSpinner  = (Spinner)findViewById(R.id.accountSpinner);
+        dueDate         = (EditText)findViewById(R.id.dueDate);
     }
 
     private void setDateTimeField() {
@@ -87,6 +97,18 @@ public class AddView extends ActionBarActivity {
     }
 
     public void weekViewAdd(View v){
+        String task     = taskName.getText().toString();
+        String course   = courseName.getText().toString();
+        String weight   = markWeight.getText().toString();
+        String repeat   = accountSpinner.getSelectedItem().toString();
+        String duedate  = dueDate.getText().toString();
+
+        int intweight = Integer.parseInt(weight);
+
+        Tasks tasks = new Tasks(task, course, intweight, repeat, duedate);
+
+        dh.insertTask(tasks);
+
         Intent intent = new Intent(this, WeekView.class);
         startActivity(intent);
         Toast.makeText(this, "Task added!", Toast.LENGTH_SHORT).show();

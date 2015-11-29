@@ -5,17 +5,31 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Ha on 11/23/2015.
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final String DB_NAME = "AssignmetAlarm.db";
-    public static final int DB_VERSION = 1;
-    public static final String TABLE_NAME = "user";
-    public static final String COLUMN_USERNAME = "username";
-    public static final String COLUMN_PASSWORD = "password";
+    public static final String DB_NAME = "AssignmentAlarm.db";
+    public static final int    DB_VERSION = 1;
+    private static final String LOG = "DatabaseHelper";
+
+    public static final String TABLE_USERS      = "user";
+    public static final String COLUMN_USERNAME  = "username";
+    public static final String COLUMN_PASSWORD  = "password";
+
+    public static final String TABLE_TASKS          = "task";
+    public static final String COLOUMN_TASKNAME     = "taskname";
+    public static final String COLOUMN_COURSENAME   = "coursename";
+    public static final String COLOUMN_MARKWEIGHT   = "markweight";
+    public static final String COLOUMN_REPEAT       = "repeat";
+    public static final String COLOUMN_DUEDATE      = "duedate";
+
     SQLiteDatabase db;
 
     public DatabaseHelper(Context context) {
@@ -24,10 +38,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_NAME + " (" +
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        //make User Table
+        db.execSQL("CREATE TABLE " + TABLE_USERS + " (" +
+                                  "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_USERNAME + " TEXT NOT NULL, " +
                 COLUMN_PASSWORD + " TEXT NOT NULL);");
+
+        //make Task Table
+        db.execSQL("CREATE TABLE " + TABLE_TASKS + " ("         +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, "       +
+                COLOUMN_TASKNAME      + " TEXT NOT NULL, "      +
+                COLOUMN_COURSENAME    + " TEXT NOT NULL, "        +
+                COLOUMN_MARKWEIGHT    + " INTEGER NOT NULL, "    +
+                COLOUMN_REPEAT        + " TEXT NOT NULL, "      +
+                COLOUMN_DUEDATE       + " TIMESTAMP NOT NULL);");
+
         this.db = db;
     }
 
@@ -41,8 +66,131 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues userValue = new ContentValues();
         userValue.put(COLUMN_USERNAME, u.getUsername());
         userValue.put(COLUMN_PASSWORD, u.getPassword());
-        db.insert(TABLE_NAME, null, userValue);
+        db.insert(TABLE_USERS, null, userValue);
         db.close();
+    }
+
+    /*
+    * Insert task from AddView activity to Task Table.
+    */
+    public void insertTask(Tasks task){
+        db = this.getWritableDatabase();
+        ContentValues taskValue = new ContentValues();
+        taskValue.put(COLOUMN_TASKNAME    , task.getTaskname());
+        taskValue.put(COLOUMN_COURSENAME  , task.getCourse());
+        taskValue.put(COLOUMN_MARKWEIGHT  , task.getWeight());
+        taskValue.put(COLOUMN_REPEAT      , task.getRepeat());
+        taskValue.put(COLOUMN_DUEDATE     , task.getDuedate());
+        db.insert(TABLE_TASKS, null, taskValue);
+        db.close();
+    }
+
+    /*
+    * Get single Task.
+    * @param task_id
+    * @return
+    */
+    public Tasks getTask(long task_id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM " + TABLE_TASKS + " WHERE "
+                + "_id" + " = " + task_id;
+
+        Log.e(LOG, selectQuery);
+
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c != null)
+            c.moveToFirst();
+
+        Tasks td = new Tasks();
+        td.setTaskname(c.getString(c.getColumnIndex(COLOUMN_TASKNAME)));
+        td.setCourse((c.getString(c.getColumnIndex(COLOUMN_COURSENAME))));
+        td.setWeight(c.getInt(c.getColumnIndex(COLOUMN_MARKWEIGHT)));
+        td.setRepeat(c.getString(c.getColumnIndex(COLOUMN_REPEAT)));
+        td.setDuedate(c.getString(c.getColumnIndex(COLOUMN_DUEDATE)));
+
+        return td;
+    }
+
+    /**
+     * Get all Tasks.
+     * @return
+     */
+    public List<Tasks> getAllTasks() {
+        List<Tasks> tasks = new ArrayList<Tasks>();
+        String selectQuery = "SELECT  * FROM " + TABLE_TASKS;
+
+        Log.e(LOG, selectQuery);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                Tasks td = new Tasks();
+                td.setTaskname(c.getString(c.getColumnIndex(COLOUMN_TASKNAME)));
+                td.setCourse((c.getString(c.getColumnIndex(COLOUMN_COURSENAME))));
+                td.setWeight(c.getInt(c.getColumnIndex(COLOUMN_MARKWEIGHT)));
+                td.setRepeat(c.getString(c.getColumnIndex(COLOUMN_REPEAT)));
+                td.setDuedate(c.getString(c.getColumnIndex(COLOUMN_DUEDATE)));
+
+                // adding to task list
+                tasks.add(td);
+            } while (c.moveToNext());
+        }
+        return tasks;
+    }
+
+    /**
+     * Get all Tasks by date (date is a String for now).
+     * @param date
+     * @return
+     */
+    public List<Tasks> getAllTasksByDate(String date) {
+        List<Tasks> tasks = new ArrayList<Tasks>();
+
+//        String selectQuery = "SELECT  * FROM " + TABLE_TASKS + " td, "
+//                + TABLE_TAG + " tg, " + TABLE_TODO_TAG + " tt WHERE tg."
+//                + KEY_TAG_NAME + " = '" + tag_name + "'" + " AND tg." + KEY_ID
+//                + " = " + "tt." + KEY_TAG_ID + " AND td." + KEY_ID + " = "
+//                + "tt." + KEY_TODO_ID;
+
+        String selectQuery = "SELECT  * FROM " + TABLE_TASKS + " WHERE "
+                + COLOUMN_DUEDATE + " = " + date;
+
+        Log.e(LOG, selectQuery);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                Tasks td = new Tasks();
+                td.setTaskname(c.getString(c.getColumnIndex(COLOUMN_TASKNAME)));
+                td.setCourse((c.getString(c.getColumnIndex(COLOUMN_COURSENAME))));
+                td.setWeight(c.getInt(c.getColumnIndex(COLOUMN_MARKWEIGHT)));
+                td.setRepeat(c.getString(c.getColumnIndex(COLOUMN_REPEAT)));
+                td.setDuedate(c.getString(c.getColumnIndex(COLOUMN_DUEDATE)));
+
+                // adding to task list
+                tasks.add(td);
+            } while (c.moveToNext());
+        }
+
+        return tasks;
+    }
+
+    /**
+     * Delete a task by id TEMPORARY, will delete by (name,course,date)
+     * @param task_id
+     */
+    public void deleteTask(long task_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_TASKS, "_id" + " = ?",
+                new String[] { String.valueOf(task_id) });
     }
 
     /**
@@ -52,7 +200,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      */
     public String searchPassword(String username){
         db = this.getReadableDatabase();
-        String query = "select username, password from " + TABLE_NAME;
+        String query = "select username, password from " + TABLE_USERS;
         Cursor cursor = db.rawQuery(query, null);
         String user;
         String pass = "not found";
@@ -83,10 +231,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    /**
+     * Closes the database.
+     */
+    public void closeDB() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null && db.isOpen())
+            db.close();
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String query = "DROP TABLE IF EXISTS" + TABLE_NAME;
-        db.execSQL(query);
+        db.execSQL("DROP TABLE IF EXISTS" + TABLE_USERS);
+        db.execSQL("DROP TABLE IF EXISTS" + TABLE_TASKS);
         this.onCreate(db);
     }
 }

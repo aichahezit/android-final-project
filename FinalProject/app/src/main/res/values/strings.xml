@@ -12,4 +12,10 @@
         <item>Weekly</item>
     </string-array>
     <string name="title_activity_register_view">RegisterView</string>
+    <string-array name="nav_drawer_items">
+        <item >Week View</item>
+        <item >Day View</item>
+        <item >Settings</item>
+        <item >Logout</item>
+    </string-array>
 </resources>

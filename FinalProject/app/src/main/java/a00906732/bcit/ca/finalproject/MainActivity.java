@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView image = (ImageView) findViewById(R.id.imageView);
         image.setImageResource(R.drawable.logo);
 
-        //Intent intent = getIntent();
+        Intent intent = getIntent();
     }
 
 
