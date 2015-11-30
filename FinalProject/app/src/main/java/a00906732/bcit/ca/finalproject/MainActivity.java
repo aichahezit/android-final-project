@@ -65,8 +65,7 @@ public class MainActivity extends AppCompatActivity {
         String password = dh.searchPassword(username);
 
         if(passwordInput.equals(password)){
-            Intent intent = new Intent(this, WeekView.class);
-//            intent.putExtra("Username", username);
+            Intent intent = new Intent(this, WeekViewNav.class);
             startActivity(intent);
 
         }
@@ -77,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void registerView(View v){
         Intent intent = new Intent(this, RegisterView.class);
-        //loginButton = (Button) findViewById(R.id.loginButton);
         startActivity(intent);
     }
 

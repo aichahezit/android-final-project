@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLOUMN_COURSENAME + " TEXT NOT NULL, " +
                 COLOUMN_MARKWEIGHT + " INTEGER NOT NULL, " +
                 COLOUMN_REPEAT + " TEXT NOT NULL, " +
+                "username" + " TEXT NOT NULL, " +
                 COLOUMN_DUEDATE + " TEXT NOT NULL);");
 
         this.db = db;
@@ -81,6 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         taskValue.put(COLOUMN_COURSENAME  , task.getCourse());
         taskValue.put(COLOUMN_MARKWEIGHT, task.getWeight());
         taskValue.put(COLOUMN_REPEAT      , task.getRepeat());
+        taskValue.put("username"          , MainActivity.username);
         taskValue.put(COLOUMN_DUEDATE, task.getDuedate());
         db.insert(TABLE_TASKS, null, taskValue);
         db.close();
@@ -97,11 +98,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String selectQuery = "SELECT  * FROM " + TABLE_TASKS + " WHERE "
-                + "duedate" + " = ?";
+                + "duedate = ? AND username = ?";
 
         Log.e(LOG, selectQuery);
 
-        Cursor c = db.rawQuery(selectQuery, new String[]{taskDate});
+        Cursor c = db.rawQuery(selectQuery, new String[]{taskDate, MainActivity.username});
 
         if (c == null) {
             return null;

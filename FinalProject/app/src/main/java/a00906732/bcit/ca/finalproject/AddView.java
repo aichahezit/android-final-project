@@ -37,6 +37,7 @@ public class AddView extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_view);
         Intent intent = getIntent();
+        Toast.makeText(this, "Fill out all fields!", Toast.LENGTH_LONG).show();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
@@ -109,13 +110,13 @@ public class AddView extends ActionBarActivity {
 
         dh.insertTask(tasks);
 
-        Intent intent = new Intent(this, WeekView.class);
+        Intent intent = new Intent(this, WeekViewNav.class);
         startActivity(intent);
         Toast.makeText(this, "Task added!", Toast.LENGTH_SHORT).show();
     }
 
     public void weekViewCancel(View v){
-        Intent intent = new Intent(this, WeekView.class);
+        Intent intent = new Intent(this, WeekViewNav.class);
         startActivity(intent);
         Toast.makeText(this, "Task cancelled!", Toast.LENGTH_SHORT).show();
 

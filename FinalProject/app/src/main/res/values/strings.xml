@@ -13,9 +13,14 @@
     </string-array>
     <string name="title_activity_register_view">RegisterView</string>
     <string-array name="nav_drawer_items">
-        <item >Week View</item>
-        <item >Day View</item>
-        <item >Settings</item>
-        <item >Logout</item>
+        <item>Week View</item>
+        <item>Day View</item>
+        <item>Settings</item>
+        <item>Logout</item>
     </string-array>
+    <string name="title_activity_week_view_nav">WeekViewNav</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_day_view_nav">DayViewNav</string>
 </resources>
