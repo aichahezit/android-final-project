@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,18 +41,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //make User Table
         db.execSQL("CREATE TABLE " + TABLE_USERS + " (" +
-                                  "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_USERNAME + " TEXT NOT NULL, " +
                 COLUMN_PASSWORD + " TEXT NOT NULL);");
 
         //make Task Table
-        db.execSQL("CREATE TABLE " + TABLE_TASKS + " ("         +
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT, "       +
-                COLOUMN_TASKNAME      + " TEXT NOT NULL, "      +
-                COLOUMN_COURSENAME    + " TEXT NOT NULL, "        +
-                COLOUMN_MARKWEIGHT    + " INTEGER NOT NULL, "    +
-                COLOUMN_REPEAT        + " TEXT NOT NULL, "      +
-                COLOUMN_DUEDATE       + " TIMESTAMP NOT NULL);");
+        db.execSQL("CREATE TABLE " + TABLE_TASKS + " (" +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLOUMN_TASKNAME + " TEXT NOT NULL, " +
+                COLOUMN_COURSENAME + " TEXT NOT NULL, " +
+                COLOUMN_MARKWEIGHT + " INTEGER NOT NULL, " +
+                COLOUMN_REPEAT + " TEXT NOT NULL, " +
+                COLOUMN_DUEDATE + " TEXT NOT NULL);");
 
         this.db = db;
     }
@@ -78,9 +79,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues taskValue = new ContentValues();
         taskValue.put(COLOUMN_TASKNAME    , task.getTaskname());
         taskValue.put(COLOUMN_COURSENAME  , task.getCourse());
-        taskValue.put(COLOUMN_MARKWEIGHT  , task.getWeight());
+        taskValue.put(COLOUMN_MARKWEIGHT, task.getWeight());
         taskValue.put(COLOUMN_REPEAT      , task.getRepeat());
-        taskValue.put(COLOUMN_DUEDATE     , task.getDuedate());
+        taskValue.put(COLOUMN_DUEDATE, task.getDuedate());
         db.insert(TABLE_TASKS, null, taskValue);
         db.close();
     }
@@ -90,27 +91,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     * @param task_id
     * @return
     */
-    public Tasks getTask(long task_id) {
+    public Tasks[] getTask(String taskDate) {
+        Tasks result[] = {};
+        int i=0;
         SQLiteDatabase db = this.getReadableDatabase();
 
         String selectQuery = "SELECT  * FROM " + TABLE_TASKS + " WHERE "
-                + "_id" + " = " + task_id;
+                + "duedate" + " = ?";
 
         Log.e(LOG, selectQuery);
 
-        Cursor c = db.rawQuery(selectQuery, null);
+        Cursor c = db.rawQuery(selectQuery, new String[]{taskDate});
 
-        if (c != null)
-            c.moveToFirst();
+        if (c == null) {
+            return null;
+        }
 
-        Tasks td = new Tasks();
-        td.setTaskname(c.getString(c.getColumnIndex(COLOUMN_TASKNAME)));
-        td.setCourse((c.getString(c.getColumnIndex(COLOUMN_COURSENAME))));
-        td.setWeight(c.getInt(c.getColumnIndex(COLOUMN_MARKWEIGHT)));
-        td.setRepeat(c.getString(c.getColumnIndex(COLOUMN_REPEAT)));
-        td.setDuedate(c.getString(c.getColumnIndex(COLOUMN_DUEDATE)));
-
-        return td;
+        c.moveToFirst();
+        result = new Tasks[c.getCount()];
+        while(!c.isAfterLast()){
+            Tasks td = new Tasks();
+            td.setTaskname(c.getString(c.getColumnIndex(COLOUMN_TASKNAME)));
+            td.setCourse((c.getString(c.getColumnIndex(COLOUMN_COURSENAME))));
+            td.setWeight(c.getInt(c.getColumnIndex(COLOUMN_MARKWEIGHT)));
+            td.setRepeat(c.getString(c.getColumnIndex(COLOUMN_REPEAT)));
+            td.setDuedate(c.getString(c.getColumnIndex(COLOUMN_DUEDATE)));
+            result[i++] = td;
+            c.moveToNext();
+        }
+//        Log.d("kitty", Integer.toString(result.length));
+        return result;
     }
 
     /**

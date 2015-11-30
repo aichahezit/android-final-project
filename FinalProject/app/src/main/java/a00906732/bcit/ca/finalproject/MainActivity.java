@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
+    public static String username;
 
     //public Button loginButton;
     DatabaseHelper dh = new DatabaseHelper(this);
@@ -58,14 +59,14 @@ public class MainActivity extends AppCompatActivity {
     public void login(View v){
         EditText usernameEditText = (EditText)findViewById(R.id.editText2);
         EditText passwordEditText = (EditText)findViewById(R.id.editText);
-        String username = usernameEditText.getText().toString();
+        username = usernameEditText.getText().toString();
         String passwordInput = passwordEditText.getText().toString();
 
         String password = dh.searchPassword(username);
 
         if(passwordInput.equals(password)){
             Intent intent = new Intent(this, WeekView.class);
-            intent.putExtra("Username", username);
+//            intent.putExtra("Username", username);
             startActivity(intent);
 
         }

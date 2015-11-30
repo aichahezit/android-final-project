@@ -17,9 +17,9 @@ public class WeekView extends AppCompatActivity {
         setContentView(R.layout.activity_week_view);
         Intent intent = getIntent();
 
-        String username = intent.getStringExtra("Username");
+//        String username = intent.getStringExtra("Username");
         TextView welcome = (TextView)findViewById(R.id.textView2);
-        welcome.setText("Welcome " + username + " !\nHere is task for next 4 days"); //welcome message
+        welcome.setText("Welcome " + MainActivity.username + " !\nHere is task for next 4 days"); //welcome message
     }
 
 
